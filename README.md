@@ -8,6 +8,41 @@
 
 _{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
 
+## Application Behaviors
+overall behavior summary:
+initialize a game state with 9 spaces, 2 players.  Players take turns selecting spaces, until a win condition is met or all 9 spaces are filled.
+
+objects:
+player {mark:"cat" or "Dog", img: array of text of html image reference, winMessage: "win text"}
+space {coordinate: [1-9], myMark:which player mark is in the space, myImg: which image to display}
+
+Specs:
+
+* Behavior: User chooses whether cat or dog plays first
+  * input: cat
+  * output: player "cat" goes first
+* Behavior: Player chooses a space and their mark is displayed
+  * input: cat player click space 9
+  * output: space 9 displays a cat
+* Behavior: When a player marks a winning space, game ends
+  * input: cat player marks 3 spaces in a row
+  * output: game ends
+* Behavior: When game ends, display win message of winning player
+  * input: Cat player wins
+  * output: "Cat Wins!"
+
+
+
+
+
+
+
+
+Wish list:
+add different images when spaces are filled
+write a genius AI
+create option for two AIs to play each other
+
 ## Setup/Installation Requirements
 
 * _This is a great place_
