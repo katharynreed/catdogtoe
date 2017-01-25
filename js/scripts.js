@@ -36,7 +36,7 @@ Game.prototype.checkWin = function(player){
     if (
         ( (this[player+"Plays"][i]) === (this.winConditions[i][0])     )&&
         ( (this[player+"Plays"][i+1]) === (this.winConditions[i][1])     )&&
-        ( (this[player+"Plays"][i+2]) === (this.winConditions[i][2])     ) 
+        ( (this[player+"Plays"][i+2]) === (this.winConditions[i][2])     )
         )
     win =true;
   };
@@ -54,21 +54,19 @@ for(i=1;i<=9;i++) {
 };
 
 
-// create game functions
-//
-// Check win conditions: track cat and dog plays, check each against array of win conditions.
-
-// var checkWin = function(playsArray) {
-//   var win = false;
-//   for (i=0;i<winConditions.length;i++){
-//     if (    (playsArray.includes(winConditions[i][0]))&&(playsArray.includes(winConditions[i][1]))&&(playsArray.includes(winConditions[i][2]))  )
-//     win =true;
-//   };
-//   return win;
-// };
-//
-
-
 
 
 //font end logic
+
+$("document").ready(function() {
+  var game = new Game;
+  $("#starterbuttons").click(function(event){
+    event.preventDefault();
+    if (this.id === "CatStart") {
+      game.isTurn = "cat"
+    } else {
+      game.isTurn = "dog"
+    }
+    $("#starterbuttons").hide();
+  });
+});
