@@ -25,8 +25,8 @@ function Board() {
 
 function Game(){
   this.winConditions = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
-  this.catPlays = [1,2,3];
-  this.dogPlays = [4,5];
+  this.catPlays = [];
+  this.dogPlays = [];
   this.isTurn="";
 };
 
@@ -42,16 +42,17 @@ Game.prototype.checkWin = function(player){
   };
   return win;
 };
+var game = new Game;
 
 // define global variables
-var board = new Board;
-var game = new Game;
+// var board = new Board;
+// var game = new Game;
 // create loop to fill spaces
 
-for(i=1;i<=9;i++) {
-  var space = new Space(i);
-  board[i] = space;
-};
+// for(i=1;i<=9;i++) {
+//   var space = new Space(i);
+//   board[i] = space;
+// };
 
 
 
@@ -59,14 +60,25 @@ for(i=1;i<=9;i++) {
 //font end logic
 
 $("document").ready(function() {
-  var game = new Game;
-  $("#starterbuttons").click(function(event){
+  $(".starterbuttons").click(function(event){
     event.preventDefault();
-    if (this.id === "CatStart") {
+    if (this.id === "catStart") { // check for bug here
       game.isTurn = "cat"
     } else {
       game.isTurn = "dog"
     }
-    $("#starterbuttons").hide();
+    $(".starterbuttons").hide();
+  });
+
+// click function to advance gameplay: records their play, removes clickable function, marks space, check for win, switches player.
+  $(".space").click(function(){
+    var spaceNumber = this.id.replace(/[a-z]*/gi,"");
+    parseInt(spaceNumber);
+    var currentPlayer = game.isTurn;
+    game[currentPlayer+"Plays"].push(spaceNumber);
+    $(this).off();
+    console.log(game);
+    // if (this.id === "space1") {
+
   });
 });
