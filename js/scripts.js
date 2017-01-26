@@ -44,6 +44,17 @@ Game.prototype.checkWin = function(player){
   return win;
 };
 
+var winStop = function(player) { // stop for win
+  if (game.checkWin(player)) {
+    $(".space").off();
+    $(".reset").show()
+      if (player === "cat") {
+        alert("Cats win, not that it's a big deal or whatever.")
+      } else if (player === "dog") {
+        alert("Dog is a Very Good Boy.")
+      }
+  }
+};
 
 var game = new Game;
 
@@ -81,8 +92,8 @@ $("document").ready(function() {
     var currentPlayer = game.isTurn;
     game[currentPlayer+"Plays"].push(spacenumber);
     $(this).off();
-    game.checkWin(currentPlayer);
-    // need to stop play here if someone wins
+    // game.checkWin(currentPlayer);
+    winStop(currentPlayer);
     console.log(game.checkWin("dog"));
     if (currentPlayer === "cat") {
       game.isTurn = "dog"
