@@ -73,12 +73,21 @@ $("document").ready(function() {
 // click function to advance gameplay: records their play, removes clickable function, marks space, check for win, switches player.
   $(".space").click(function(){
     var spaceNumber = this.id.replace(/[a-z]*/gi,"");
-    parseInt(spaceNumber);
+    spacenumber = parseInt(spaceNumber);
     var currentPlayer = game.isTurn;
-    game[currentPlayer+"Plays"].push(spaceNumber);
+    game[currentPlayer+"Plays"].push(spacenumber);
     $(this).off();
+    game.checkWin(currentPlayer);
+    // need to stop play here if someone wins
+    console.log(game.checkWin("dog"));
+    if (currentPlayer === "cat") {
+      game.isTurn = "dog"
+    } else {
+      game.isTurn = "cat"
+    }
+
+
     console.log(game);
-    // if (this.id === "space1") {
 
   });
 });
