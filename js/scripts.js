@@ -83,24 +83,29 @@ $("document").ready(function() {
       game.isTurn = "dog"
     }
     $(".starterbuttons").hide();
+    $(".show-reset").show();
   });
 
 // click function to advance gameplay: records their play, removes clickable function, marks space, check for win, switches player.
   $(".space").click(function(){
     var spaceNumber = this.id.replace(/[a-z]*/gi,"");
-    spacenumber = parseInt(spaceNumber);
+    spaceNumber = parseInt(spaceNumber);
     var currentPlayer = game.isTurn;
-    game[currentPlayer+"Plays"].push(spacenumber);
+    game[currentPlayer+"Plays"].push(spaceNumber);
     $(this).off();
-
+    var imgToAdd = currentPlayer + "img" + game[currentPlayer+"Plays"].length;
+    $(this).addClass(imgToAdd);
+    $(this).text(currentPlayer);
 
 
     winStop(currentPlayer);
     console.log(game.checkWin("dog"));
     if (currentPlayer === "cat") {
       game.isTurn = "dog"
+      $(".show-reset").hide();
     } else {
       game.isTurn = "cat"
+      $(".show-reset").hide();
     }
 
     console.log(game.dogPlays);

@@ -1,7 +1,46 @@
+body {
+  background-image: url(catdogbackground.png);
+  text-align: center;
+}
+
+.board {
+  position: static;
+}
+
+.show-reset{
+  display: none;
+}
+
+.container {
+  text-align: center;
+  width: 600px;
+  height: 600px;
+}
+
 .space {
   border: 1px solid black;
   width: 200px;
   height: 200px;
+  background-color: #fff;
+  display: inline-block;
+}
+
+.space-text {
+  font-size: 40px;
+  color: #fff;
+  padding-top: 60px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.board {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button {
+  background-color:
 }
 
 .reset {

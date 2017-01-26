@@ -9,48 +9,46 @@
     <title></title>
   </head>
   <body>
-    <div class="starterbuttons" id="catStart">
-      <button class="btn" type="button" name="button">Start as cat!</button>
-    </div>
-    <div class="starterbuttons" id="dogStart">
-      <button class="btn" type="button" name="button">Start as dog!</button>
-    </div>
     <div class="container">
-      <div class="row">
-        <div class="col-xs-4 space catimg1" id="space1">
-          <h2>Space1</h2>
+      <div class="board">
+        <div class="row row-centered">
+          <div class="col-xs-4 space space-text" id="space1">
+          </div>
+          <div class="col-xs-4 space space-text" id="space2">
+          </div>
+          <div class="col-xs-4 space space-text" id="space3">
+          </div>
         </div>
-        <div class="col-xs-4 space" id="space2">
-          <h2>Space2</h2>
+        <div class="row">
+          <div class="col-xs-4 space space-text"id="space4">
+          </div>
+          <div class="col-xs-4 space space-text"  id="space5">
+          </div>
+          <div class="col-xs-4 space space-text"  id="space6">
+          </div>
         </div>
-        <div class="col-xs-4 space" id="space3">
-          <h2>Space3</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-4 space"id="space4">
-          <h2>Space4</h2>
-        </div>
-        <div class="col-xs-4 space"  id="space5">
-          <h2>Space5</h2>
-        </div>
-        <div class="col-xs-4 space"  id="space6">
-          <h2>Space6</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-4 space"  id="space7">
-          <h2>Space7</h2>
-        </div>
-        <div class="col-xs-4 space"  id="space8">
-          <h2>Space8</h2>
-        </div>
-        <div class="col-xs-4 space"  id="space9">
-          <h2>Space9</h2>
+        <div class="row">
+          <div class="col-xs-4 space space-text"  id="space7">
+          </div>
+          <div class="col-xs-4 space space-text"  id="space8">
+          </div>
+          <div class="col-xs-4 space space-text"  id="space9">
+          </div>
         </div>
       </div>
+      <br>
+      <div class="starterbuttons" id="catStart">
+        <button class="btn" type="button" name="button">Start as cat!</button>
+      </div>
+      <div class="starterbuttons" id="dogStart">
+        <br>
+        <button class="btn" type="button" name="button">Start as dog!</button>
+      </div>
+      <input type="button" class="btn show-reset" value="Reset Board!" onClick="window.location.reload()">
       <div class="reset">
-        <button type="submit" name="playAgain">Play Again!</button>
+        <br>
+        <!-- <button class="btn" type="submit" name="playAgain">Play Again!</button> -->
+        <input type="button" class="btn" value="Play Again!" onClick="window.location.reload()">
       </div>
     </div>
 
