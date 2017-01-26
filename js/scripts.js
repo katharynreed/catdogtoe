@@ -47,7 +47,7 @@ Game.prototype.checkWin = function(player){
 var winStop = function(player) { // stop for win
   if (game.checkWin(player)) {
     $(".space").off();
-    $(".reset").show()
+    $(".reset").show();
       if (player === "cat") {
         alert("Cats win, not that it's a big deal or whatever.")
       } else if (player === "dog") {
@@ -107,7 +107,10 @@ $("document").ready(function() {
       game.isTurn = "cat"
       $(".show-reset").hide();
     }
-
+    if (game["catPlays"].length + game["dogPlays"].length === 9 && !game.checkWin(currentPlayer)){
+       alert ("Cats and Dogs are locked in stalemate.  The struggle continues...");
+       $(".show-reset").show();
+    }
     console.log(game.dogPlays);
     console.log(game);
 
