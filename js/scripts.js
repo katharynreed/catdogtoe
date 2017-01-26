@@ -92,7 +92,9 @@ $("document").ready(function() {
     var currentPlayer = game.isTurn;
     game[currentPlayer+"Plays"].push(spacenumber);
     $(this).off();
-    // game.checkWin(currentPlayer);
+
+
+
     winStop(currentPlayer);
     console.log(game.checkWin("dog"));
     if (currentPlayer === "cat") {

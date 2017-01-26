@@ -3,3 +3,57 @@
   width: 200px;
   height: 200px;
 }
+
+.reset {
+  display: none;
+}
+
+.catimg1 {
+  background-image: url(../img/catgif1.gif);
+  background-position: center;
+}
+
+.catimg2 {
+  background-image: url(../img/catgif2.gif);
+  background-position: center;
+}
+
+.catimg3 {
+  background-image: url(../img/catgif3.gif);
+  background-position: center;
+}
+
+.catimg4 {
+  background-image: url(../img/catgif4.gif);
+  background-position: center;
+}
+
+.catimg5 {
+  background-image: url(../img/catgif5.gif);
+  background-position: center;
+}
+
+.dogimg1 {
+  background-image: url(../img/doggif1.gif);
+  background-position: center;
+}
+
+.dogimg2 {
+  background-image: url(../img/doggif2.gif);
+  background-position: center;
+}
+
+.dogimg3 {
+  background-image: url(../img/doggif3.gif);
+  background-position: center;
+}
+
+.dogimg4 {
+  background-image: url(../img/doggif4.gif);
+  background-position: center;
+}
+
+.dogimg5 {
+  background-image: url(../img/doggif5.gif);
+  background-position: center;
+}
