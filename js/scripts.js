@@ -32,16 +32,19 @@ function Game(){
 
 Game.prototype.checkWin = function(player){
   var win = false;
+  var plays = this[player+"Plays"].valueOf();
   for (i=0;i<this.winConditions.length;i++){
     if (
-        ( (this[player+"Plays"][i]) === (this.winConditions[i][0])     )&&
-        ( (this[player+"Plays"][i+1]) === (this.winConditions[i][1])     )&&
-        ( (this[player+"Plays"][i+2]) === (this.winConditions[i][2])     )
+        ( plays.includes( (this.winConditions[i][0]) )    )&&
+        ( plays.includes( (this.winConditions[i][1]) )    )&&
+        ( plays.includes( (this.winConditions[i][2]) )    )
         )
     win =true;
   };
   return win;
 };
+
+
 var game = new Game;
 
 // define global variables
@@ -60,6 +63,7 @@ var game = new Game;
 //font end logic
 
 $("document").ready(function() {
+
   $(".starterbuttons").click(function(event){
     event.preventDefault();
     if (this.id === "catStart") { // check for bug here
@@ -86,7 +90,7 @@ $("document").ready(function() {
       game.isTurn = "cat"
     }
 
-
+    console.log(game.dogPlays);
     console.log(game);
 
   });
