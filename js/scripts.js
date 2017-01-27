@@ -1,33 +1,11 @@
 // define objects
-function Player(mark,img,message) {
-  this.mark = mark;
-  this.img = img;
-  this.message= message;
-};
-
-function Space(coordinate) {
-  this.coordinate = coordinate;
-  this.myMark = "";
-  this.myImage = "";
-};
-
-function Board() {
-  this.space1;
-  this.space2;
-  this.space3;
-  this.space4;
-  this.space5;
-  this.space6;
-  this.space7;
-  this.space8;
-  this.space9;
-};
 
 function Game(){
   this.winConditions = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
   this.catPlays = [];
   this.dogPlays = [];
   this.isTurn="";
+  this.availableMoves=[1,2,3,4,5,6,7,8,9];
 };
 
 Game.prototype.checkWin = function(player){
@@ -44,6 +22,54 @@ Game.prototype.checkWin = function(player){
   return win;
 };
 
+// Function to update game values: add number to array of player moves, remove from available moves
+
+Game.prototype.updateGameValue = function(activespace){
+  this[this.isTurn+"Plays"].push(activespace);
+  var remove = this.availableMoves.indexOf(activespace);
+  this.availableMoves.splice(remove,1);
+};
+
+
+
+// Strategy function:
+// Game.prototype.strategy = function () {
+//   var availableMoves = [1,2,3,4,5,6,7,8,9]
+//
+// // if I have 2 in a row, win
+//
+// // If opponent has 2 in a row, block win
+//
+// // if I have fork, make fork
+//
+// // if opponent has fork, block fork (create 2 in row if possible)
+//
+// // center
+//
+// // corner opposite opponents mark
+//
+// // empty corner
+//
+// // empty side
+//
+// };
+
+Game.prototype.togglePlayer = function(){
+  if (this.isTurn === "cat"){
+    this.isTurn = "dog";
+  } else {
+    this.isTurn = "cat";
+  };
+};
+
+Game.prototype.callDraw = function() {
+  if (this["catPlays"].length + this["dogPlays"].length === 9 && this.checkWin(this.isTurn) === false) {
+    alert ("Cats and Dogs are locked in stalemate.  The struggle continues...");
+    $(".show-reset").show();
+  }
+}
+
+
 var winStop = function(player) { // stop for win
   if (game.checkWin(player)) {
     $(".space").off();
@@ -57,19 +83,6 @@ var winStop = function(player) { // stop for win
 };
 
 var game = new Game;
-
-// define global variables
-// var board = new Board;
-// var game = new Game;
-// create loop to fill spaces
-
-// for(i=1;i<=9;i++) {
-//   var space = new Space(i);
-//   board[i] = space;
-// };
-
-
-
 
 //font end logic
 
@@ -90,29 +103,13 @@ $("document").ready(function() {
   $(".space").click(function(){
     var spaceNumber = this.id.replace(/[a-z]*/gi,"");
     spaceNumber = parseInt(spaceNumber);
-    var currentPlayer = game.isTurn;
-    game[currentPlayer+"Plays"].push(spaceNumber);
+    game.updateGameValue(spaceNumber);
     $(this).off();
-    var imgToAdd = currentPlayer + "img" + game[currentPlayer+"Plays"].length;
+    var imgToAdd = game.isTurn + "img" + game[game.isTurn+"Plays"].length;
     $(this).addClass(imgToAdd);
-    $(this).text(currentPlayer);
-
-
-    winStop(currentPlayer);
-    console.log(game.checkWin("dog"));
-    if (currentPlayer === "cat") {
-      game.isTurn = "dog"
-      $(".show-reset").hide();
-    } else {
-      game.isTurn = "cat"
-      $(".show-reset").hide();
-    }
-    if (game["catPlays"].length + game["dogPlays"].length === 9 && !game.checkWin(currentPlayer)){
-       alert ("Cats and Dogs are locked in stalemate.  The struggle continues...");
-       $(".show-reset").show();
-    }
-    console.log(game.dogPlays);
-    console.log(game);
-
+    $(this).text(game.isTurn);
+    winStop(game.isTurn);
+    game.callDraw();
+    game.togglePlayer();
   });
 });
